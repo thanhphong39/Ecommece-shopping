@@ -10,6 +10,7 @@ import { useState } from 'react'
 import { ToastContainer, toast } from "react-toastify";
 
 export const backendUrl = import.meta.env.VITE_BACKEND_URL;
+export const currency = "$"
 
 const App = () => {
    
