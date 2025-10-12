@@ -8,16 +8,7 @@ const BestSeller = () => {
   const [bestSeller, setBestSeller] = useState([]);
 
   useEffect(() => {
-    console.log("All products:", products);
-    // Kiểm tra sản phẩm đầu tiên
-    if (products.length > 0) {
-      console.log("First product:", products[0]);
-      console.log("bestSeller property:", products[0].bestSeller);
-      console.log("bestseller property:", products[0].bestseller);
-    }
-
     const bestProduct = products.filter((item) => item.bestseller);
-    console.log("Filtered bestsellers:", bestProduct);
     setBestSeller(bestProduct.slice(0, 10));
   }, [products]);
 
