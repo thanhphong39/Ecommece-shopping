@@ -1,4 +1,4 @@
-import React, { use, useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { assets } from "../assets/assets";
 import { Link, NavLink } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext";
@@ -6,14 +6,21 @@ import { ShopContext } from "../context/ShopContext";
 const Navbar = () => {
   const [visible, setVisible] = useState(false);
 
-  const { setShowSearch, getCartCount, navigate, token, setToken, setCartItems } = useContext(ShopContext);
+  const {
+    setShowSearch,
+    getCartCount,
+    navigate,
+    token,
+    setToken,
+    setCartItems,
+  } = useContext(ShopContext);
 
   const logout = () => {
     navigate("/login");
     localStorage.removeItem("token");
     setToken("");
     setCartItems({});
-  }
+  };
 
   return (
     <div className="flex items-center justify-between py-5 font-medium">
@@ -38,6 +45,12 @@ const Navbar = () => {
           <p>CONTACT</p>
           <hr className="w-6 border-2 border-black rounded-full hidden" />
         </NavLink>
+        <button
+          onClick={() => window.open("http://localhost:5174", "_blank")}
+          className="bg-black text-white px-3 py-1 text-xs rounded-full hover:bg-gray-800 transition-colors"
+        >
+          Admin
+        </button>
       </ul>
 
       <div className="flex items-center gap-6">
@@ -54,17 +67,22 @@ const Navbar = () => {
             className="w-5 cursor-pointer"
             alt=""
           />
-          {token && 
+          {token && (
             <div className="group-hover:block hidden absolute dropdown-menu right-0 pt-4">
               <div className="flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-500 rounded">
                 <p className="cursor-pointer hover:text-black">My Profile</p>
-                <p onClick={()=>navigate("/orders")} className="cursor-pointer hover:text-black">Orders</p>
+                <p
+                  onClick={() => navigate("/orders")}
+                  className="cursor-pointer hover:text-black"
+                >
+                  Orders
+                </p>
                 <p onClick={logout} className="cursor-pointer hover:text-black">
                   Logout
                 </p>
               </div>
             </div>
-          }
+          )}
         </div>
 
         <Link to="/cart" className="relative">
@@ -73,6 +91,8 @@ const Navbar = () => {
             {getCartCount()}
           </p>
         </Link>
+
+
         <img
           onClick={() => setVisible(true)}
           src={assets.menu_icon}
@@ -82,7 +102,6 @@ const Navbar = () => {
       </div>
 
       {/* Silebar Menu */}
-
       <div
         className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all ${
           visible ? "w-full" : "w-0"
@@ -125,6 +144,16 @@ const Navbar = () => {
         >
           <p>CONTACT</p>
         </NavLink>
+        {/* Thêm Admin vào sidebar */}
+        <div
+          onClick={() => {
+            window.open("http://localhost:5174", "_blank");
+            setVisible(false);
+          }}
+          className="flex flex-col items-center gap-1 p-3 border-b border-gray-200 cursor-pointer bg-black text-white"
+        >
+          <p>ADMIN</p>
+        </div>
       </div>
     </div>
   );
