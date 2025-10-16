@@ -46,7 +46,9 @@ const Navbar = () => {
           <hr className="w-6 border-2 border-black rounded-full hidden" />
         </NavLink>
         <button
-          onClick={() => window.open("http://localhost:5174", "_blank")}
+          onClick={() =>
+            window.open("https://ecommece-shopping-admin.vercel.app/", "_blank")
+          }
           className="bg-black text-white px-3 py-1 text-xs rounded-full hover:bg-gray-800 transition-colors"
         >
           Admin
@@ -91,7 +93,6 @@ const Navbar = () => {
             {getCartCount()}
           </p>
         </Link>
-
 
         <img
           onClick={() => setVisible(true)}
