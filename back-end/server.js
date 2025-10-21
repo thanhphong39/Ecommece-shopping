@@ -17,17 +17,7 @@ connectCloudinary();
 
 // Middlewares
 app.use(express.json());
-app.use(
-  cors({
-    origin: [
-      "https://ecommerce-shopping.vercel.app", // domain frontend (vercel)
-      "http://localhost:5173", // cho phép truy cập khi dev local
-    ],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  })
-);
-
+app.use(cors());
 
 //api endpoints
 app.use("/api/user",userRouter);
