@@ -47,7 +47,10 @@ const Navbar = () => {
         </NavLink>
         <button
           onClick={() =>
-            window.open("https://ecommece-shopping-admin.vercel.app/", "_blank")
+            window.open(
+              "https://ecommece-sproject-adminpanel.vercel.app/",
+              "_blank"
+            )
           }
           className="bg-black text-white px-3 py-1 text-xs rounded-full hover:bg-gray-800 transition-colors"
         >
